@@ -3,124 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            background: white;
-            padding: 20px;
-            width: 350px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        .input-group {
-            display: flex;
-            gap: 10px;
-        }
-
-        input {
-            flex: 1;
-            padding: 10px;
-        }
-
-        button {
-            padding: 10px 15px;
-            border: none;
-            background: #007bff;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-        }
-
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #eee;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-
-        .completed {
-            text-decoration: line-through;
-            color: gray;
-        }
-
-        .delete-btn {
-            background: red;
-            padding: 5px 10px;
-        }
-    </style>
+    <title>Premium To-Do App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="container">
-    <h2>To-Do List</h2>
+    <div class="background-glow"></div>
+    
+    <div class="todo-card">
+        <header>
+            <h2>Today's Focus</h2>
+            <p id="current-date"></p>
+        </header>
+        
+        <div class="input-group">
+            <input type="text" id="todo-input" placeholder="What's your next win?..." autocomplete="off">
+            <button id="add-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+        </div>
 
-    <div class="input-group">
-        <input type="text" id="taskInput" placeholder="Enter task">
-        <button onclick="addTask()">Add</button>
+        <ul id="todo-list">
+            </ul>
     </div>
 
-    <ul id="taskList"></ul>
-</div>
-
-<script>
-    function addTask() {
-        const input = document.getElementById("taskInput");
-        const taskText = input.value.trim();
-
-        if (taskText === "") return;
-
-        const li = document.createElement("li");
-
-        const span = document.createElement("span");
-        span.textContent = taskText;
-
-        span.addEventListener("click", () => {
-            span.classList.toggle("completed");
-        });
-
-        const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Delete";
-        deleteBtn.classList.add("delete-btn");
-
-        deleteBtn.addEventListener("click", () => {
-            li.remove();
-        });
-
-        li.appendChild(span);
-        li.appendChild(deleteBtn);
-
-        document.getElementById("taskList").appendChild(li);
-
-        input.value = "";
-    }
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
